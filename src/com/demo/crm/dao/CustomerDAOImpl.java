@@ -51,4 +51,16 @@ public class CustomerDAOImpl implements CustomerDAO {
 		return customer;
 	}
 
+	@Override
+	public void deleteCustomer(int customerId) {
+		Session session = sessionFactory.getCurrentSession();
+		
+		Query query = session.createQuery("delete from Customer where id=:theCustomerId");
+		
+		query.setParameter("theCustomerId", customerId);
+		
+		query.executeUpdate();
+		
+	}
+
 }
